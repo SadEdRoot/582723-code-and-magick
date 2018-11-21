@@ -27,13 +27,13 @@ var getMaxElement = function (arr) {
   return maxElement;
 };
 
-function setColorBar(name) {
+var setColorBar = function (name) {
   if (name === 'Вы') {
     return '#c00';
   } else {
     return 'hsl(240, ' + Math.floor(Math.random() * 100) + '%, 50%)';
   }
-}
+};
 
 window.renderStatistics = function (ctx, names, times) {
   renderCloud(ctx, 110, 20, 'rgba(0, 0, 0, 0.7)');
