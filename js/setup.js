@@ -37,7 +37,6 @@ var getArrayWizards = function (number) {
   return wizards;
 };
 
-//отривосовываюи вставляю визардов
 var renderWizard = function (wizard) {
   var wizardElement = similarWizardTemplate.cloneNode(true);
 
