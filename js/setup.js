@@ -47,7 +47,7 @@ var renderWizard = function (wizard) {
   return wizardElement;
 };
 
-var createSimilarWirads = function (numberOfWizards)  {
+var createSimilarWirads = function (numberOfWizards) {
   var fragment = document.createDocumentFragment();
   var arrayWizards = getArrayWizards(numberOfWizards);
   for (var i = 0; i < arrayWizards.length; i++) {
