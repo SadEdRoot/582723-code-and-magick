@@ -19,8 +19,6 @@ var getRandomArrayElement = function (array) {
   return array[Math.floor(Math.random() * array.length)];
 };
 
-var wizards = [];
-
 var getWizard = function () {
   var element = {
     name: getRandomArrayElement(WIZARD_NAMES) + getRandomArrayElement(WIZARD_SURNAMES),
@@ -30,11 +28,16 @@ var getWizard = function () {
   return element;
 };
 
-for (var j = 0; j < NUMBER_OF_WIZARD; j++) {
-  wizards.push(getWizard);
-}
+var getArrayWizards = function (number) {
+  var wizards = [];
+  for (var j = 0; j < number; j++) {
+    wizards.push(getWizard());
+  }
 
+  return wizards;
+};
 
+//отривосовываюи вставляю визардов
 var renderWizard = function (wizard) {
   var wizardElement = similarWizardTemplate.cloneNode(true);
 
@@ -45,12 +48,16 @@ var renderWizard = function (wizard) {
   return wizardElement;
 };
 
-var fragment = document.createDocumentFragment();
+var createSimilarWirads = function (numberOfWizards)  {
+  var fragment = document.createDocumentFragment();
+  var arrayWizards = getArrayWizards(numberOfWizards);
+  for (var i = 0; i < arrayWizards.length; i++) {
+    fragment.appendChild(renderWizard(arrayWizards[i]));
+  }
 
-for (var i = 0; i < wizards.length; i++) {
-  fragment.appendChild(renderWizard(wizards[i]));
-}
+  similarListElement.appendChild(fragment);
 
-similarListElement.appendChild(fragment);
+  userDialog.querySelector('.setup-similar').classList.remove('hidden');
+};
 
-userDialog.querySelector('.setup-similar').classList.remove('hidden');
+createSimilarWirads(NUMBER_OF_WIZARD);
