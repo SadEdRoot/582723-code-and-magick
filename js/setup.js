@@ -20,6 +20,7 @@ var setupWizadCoat = setup.querySelector('.setup-wizard .wizard-coat');
 var setupWizadEyes = setup.querySelector('.setup-wizard .wizard-eyes');
 var setupWizadFireball = setup.querySelector('.setup-fireball-wrap');
 var similarListElement = setup.querySelector('.setup-similar-list');
+var userNameForm = setup.querySelector('.setup-user-name');
 
 
 var similarWizardTemplate = document.querySelector('#similar-wizard-template')
@@ -106,6 +107,14 @@ setupClose.addEventListener('keydown', function (evt) {
   if (evt.keyCode === ENTER_KEYCODE) {
     closePopup();
   }
+});
+
+userNameForm.addEventListener('focus', function () {
+  document.removeEventListener('keydown', onPopupEscPress);
+});
+
+userNameForm.addEventListener('blur', function () {
+  document.addEventListener('keydown', onPopupEscPress);
 });
 
 userNameInput.addEventListener('invalid', function () {
