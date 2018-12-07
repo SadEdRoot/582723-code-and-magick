@@ -73,6 +73,7 @@ var createSimilarWirads = function (numberOfWizards) {
 
 createSimilarWirads(NUMBER_OF_WIZARD);
 
+// обработка событий
 var onPopupEscPress = function (evt) {
   if (evt.keyCode === ESC_KEYCODE) {
     closePopup();
@@ -84,8 +85,14 @@ var openPopup = function () {
   document.addEventListener('keydown', onPopupEscPress);
 };
 
+var resetSetupPosition = function () {
+  setup.style.top = '';
+  setup.style.left = '';
+};
+
 var closePopup = function () {
   setup.classList.add('hidden');
+  resetSetupPosition();
   document.removeEventListener('keydown', onPopupEscPress);
 };
 
@@ -117,6 +124,7 @@ userNameForm.addEventListener('blur', function () {
   document.addEventListener('keydown', onPopupEscPress);
 });
 
+// валидация ввода имени
 userNameInput.addEventListener('invalid', function () {
   if (userNameInput.validity.tooShort) {
     userNameInput.setCustomValidity('Имя должно состоять минимум из 2-х символов');
@@ -138,6 +146,7 @@ userNameInput.addEventListener('input', function (evt) {
   }
 });
 
+// функции изменения цветов
 var setupColorSVG = function (array, element, input) {
   var color = getRandomArrayElement(array);
   element.style.fill = color;
