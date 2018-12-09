@@ -1,9 +1,10 @@
 'use strict';
 
+// функция которая перемещает окно диалога
 (function () {
 
   var setupDialogElement = document.querySelector('.setup');
-  var dialogHandler = setupDialogElement.querySelector('.setup-user-pic');
+  var dialogHandler = setupDialogElement.querySelector('.upload');
 
   dialogHandler.addEventListener('mousedown', function (evt) {
     evt.preventDefault();
